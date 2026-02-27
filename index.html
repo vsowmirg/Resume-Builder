@@ -1,8 +1,43 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Sowmiya Portfolio</title>
+    <style>
+        /* A little styling to make the counter pop */
+        #counter-container {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f4f4f4;
+            display: inline-block;
+            border-radius: 5px;
+        }
+        #counter {
+            font-weight: bold;
+            color: #0078d4; /* Azure Blue */
+        }
+    </style>
+</head>
 <body>
     <h1>Sowmiya Vadivelu - Cloud Engineer Portfolio</h1>
     <p>Welcome to my Azure-hosted site!</p>
-    <h2>I am using Github Actions now</h2>
+    <h2>I am using GitHub Actions now</h2>
+
+    <div id="counter-container">
+        Visitor Count: <span id="counter">...</span>
+    </div>
+
+    <script>
+        const functionUrl = "https://func-portfolio-counter-sowmiya-v2.azurewebsites.net/api/GetVisitorCount";
+
+        fetch(functionUrl)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('counter').innerText = data;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('counter').innerText = "0";
+            });
+    </script>
 </body>
 </html>
