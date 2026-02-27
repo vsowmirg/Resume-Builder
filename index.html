@@ -27,17 +27,20 @@
     </div>
 
     <script>
-        const functionUrl = "https://func-portfolio-counter-sowmiya-v2.azurewebsites.net/api/GetVisitorCount";
+    // This is the URL from your successful test (image_358bfb.jpg)
+    const functionUrl = "https://func-portfolio-counter-sowmiya-v2-e4bdcqc7gzhughay.centralus-01.azurewebsites.net/api/GetVisitorCount";
 
-        fetch(functionUrl)
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('counter').innerText = data;
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                document.getElementById('counter').innerText = "0";
-            });
-    </script>
+    fetch(functionUrl)
+        .then(response => response.text())
+        .then(data => {
+            console.log("Counter Updated:", data);
+            document.getElementById('counter').innerText = data;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // We keep this so it doesn't just stay blank if there's a flicker
+            document.getElementById('counter').innerText = "0"; 
+        });
+</script>
 </body>
 </html>
